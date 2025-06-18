@@ -1,6 +1,6 @@
-# Building and Deploying the LLM Chatbot
+# Building and Deploying the ChitChat
 
-This guide will help you build and deploy the LLM Chatbot project. The command-line tool `dfx` can be used to build and deploy the project to the mainnet.
+This guide will help you build and deploy the ChitChat project. The command-line tool `dfx` can be used to build and deploy the project to the mainnet.
 
 ## Local Development Setup
 
@@ -29,8 +29,6 @@ To set up the project for local development, follow these steps:
 For a consistent development environment, you can use the provided Dev Container:
 
 1. Install [VS Code](https://code.visualstudio.com/) and the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
-
-2. Make sure Docker is running, then navigate into your project's directory and start the Dev Container by selecting `Dev-Containers: Reopen in Container` in VS Code's command palette (F1 or Ctrl/Cmd+Shift+P).
 
 > Note that local development ports (e.g. the ports used by `dfx` or `vite`) are forwarded from the Dev Container to your local machine. In the VS code terminal, use Ctrl/Cmd+Click on the displayed local URLs to open them in your browser. To view the current port mappings, click the "Ports" tab in the VS Code terminal window.
 
@@ -94,6 +92,3 @@ After your project has been deployed to the mainnet, it will continuously requir
 
 > If your project's canisters run out of cycles, they will be removed from the network.
 
-## Additional examples
-
-Additional code examples and sample applications can be found in the [DFINITY examples repo](https://github.com/dfinity/examples).
