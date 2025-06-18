@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1500&q=80') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.chitchat-title {
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
+  font-size: 2.5rem;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 8px #000;
+}
+
+.chitchat-container {
+  background: rgba(20, 20, 20, 0.95);
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+  padding: 2rem 1.5rem 1rem 1.5rem;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.chitchat-message {
+  background: #181818;
+  color: #fff;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.chitchat-message.user {
+  background: #23272f;
+  color: #fff;
+  text-align: right;
+}
+
+.chitchat-message.bot {
+  background: #181818;
+  color: #fff;
+  text-align: left;
+}
+
+.chitchat-input {
+  background: #23272f;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem 0 0 0.5rem;
+  padding: 0.75rem;
+}
+
+.chitchat-send-btn {
+  background: #fff;
+  color: #181818;
+  border: none;
+  border-radius: 0 0.5rem 0.5rem 0;
+  padding: 0.75rem 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chitchat-send-btn:hover {
+  background: #e2e2e2;
+}
