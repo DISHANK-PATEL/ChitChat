@@ -1,3 +1,7 @@
+## Note
+If the deployed link to this dApp(Top Right Corner) no longer works, it likely means the canister has run out of cycles and has been removed from the ICP mainnet.
+Since this is a sample project created for learning and exploring the Internet Computer Protocol (ICP) and its canister deployment process, it does not have an active cycle top-up mechanism or ICP tokens attached.
+ICP uses a reverse gas model, where developers—not users—pay for computation via cycles. Without sufficient cycles, deployed canisters cannot stay active.
 ![image](https://github.com/user-attachments/assets/d00f9889-0746-4c96-872b-fadab53419f9)
 
 ## ChitChat The Decentralised Chatbot
