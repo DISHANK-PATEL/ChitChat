@@ -1,9 +1,14 @@
-# ChitChat
+## ChitChat The Decentralised Chatbot
 
-The ChitChat example demonstrates how an ICP smart contract can be used to interact with a large language model (LLM) to generate text. The user can input a prompt, and the smart contract will use the LLM to generate a response.
-The response is then returned to the user, and the user can submit some follow-up prompts to continue the conversation.
+The Project is End‑to‑end decentralized chatbot platform comprising a Rust canister backend, an ICP asset canister for frontend delivery, and a local Ollama server for LLM inference.
 
-This example uses Rust, the primary programming language for developing canisters on ICP.
+Rust codebase is compiled to WebAssembly for on‑chain execution, managing chat state, candid interfaces, and HTTP‑out calls.
+
+Frontend (HTML5, Tailwind CSS, vanilla JS) lives in its own asset canister, served globally via the ICP HTTP gateway.
+
+Ollama integration runs an 8B‑parameter Llama3 model off‑chain on localhost:11434, delivering streamed AI responses back into the canister.
+
+Full project tooling includes Cargo for the canister, npm for asset bundling, and BUILD.md–driven workflows for local development and mainnet deployment.
 
 ## Deployment Instructions
 
@@ -15,42 +20,54 @@ To deploy this project to the mainnet, follow these steps:
 
 ## Local Development
 
-To develop this project locally, follow these steps:
-
-1. Clone this repository
-2. Install the required dependencies
-3. Follow the development setup steps in BUILD.md
-
-## Project structure
-
-```
-src/
-├── llm_chatbot/
-│   ├── src/
-│   │   └── lib.rs
-│   └── Cargo.toml
-└── llm_chatbot_assets/
-    ├── src/
-    │   └── index.html
-    └── package.json
-```
-
-## Setting up Ollama
-
-To be able to test the agent locally, you'll need a server for processing the agent's prompts. For that, we'll use `ollama`, which is a tool that can download and serve LLMs.
-See the documentation on the [Ollama website](https://ollama.com/) to install it. Once it's installed, run:
-
-```
+```bash
+# 1. Start Ollama server
 ollama serve
-# Expected to start listening on port 11434
-```
 
-The above command will start the Ollama server, so that it can process requests by the agent. Additionally, and in a separate window, run the following command to download the LLM that will be used by the agent:
-
-```
+# 2. Run Ollama model
 ollama run llama3.1:8b
+
+# 3. Start local Internet Computer
+dfx start --background
+
+# 4. Frontend setup
+cd src/llm_chatbot_assets
+npm install
+npm run dev
+
+# 5. Backend (canister) setup
+cd ../llm_chatbot
+cargo build --target wasm32-unknown-unknown --release
+dfx --version
+dfx identity use default
+dfx deploy
+
+# 6. Open the app
+# Visit in browser:
+# http://127.0.0.1:8000
+````
+
+## Mainnet Deployment
+
+```bash
+# 1. Create & select a new identity
+dfx identity new <IDENTITY_NAME>
+dfx identity use <IDENTITY_NAME>
+
+# 2. Redeem cycles from faucet
+dfx cycles redeem-faucet-coupon COUPON --ic
+
+# 3. Deploy to ICP mainnet
+dfx deploy --ic
+
+# 4. Access the live app
+# URL printed by deploy, e.g.:
+# https://<your-canister-id>.ic0.app
 ```
 
-The above command will download an 8B parameter model, which is around 4GiB. Once the command executes and the model is loaded, you can terminate it. You won't need to do this step again.
+---
 
-For more detailed instructions, please refer to the `BUILD.md` file.
+For deeper configuration and build workflows, see [BUILD.md](./BUILD.md).
+
+```
+```
